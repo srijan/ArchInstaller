@@ -1,10 +1,9 @@
-README
-======
-
+ArchInstaller
+=============
 
 Automated installer for Archlinux.
 
-### Warning:
+#### Warning:
 
 This script deletes all existing partitions in /dev/sda.
 
