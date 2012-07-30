@@ -1,0 +1,5 @@
+TODO
+
+* Move all config variables to a single file.
+* Permit alternative disk setups.
+* Make a locales config variable.
