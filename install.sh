@@ -14,19 +14,19 @@ mount /dev/sda2 /mnt
 mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
 
-echo "###########################   Copying Packages   ###########################"
-mkdir -p /mnt/var/cache/pacman/pkg/
-mv pkg/* /mnt/var/cache/pacman/pkg/
+echo "###########################   Copying Files   ###########################"
+cp -r files/* /mnt/
 
 echo "###########################   Installing Packages   ###########################"
 pacstrap /mnt base base-devel
 pacstrap /mnt grub-bios
 pacstrap /mnt $PACKAGES
 
+echo "###########################   Generating fstab   ###########################"
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
+echo "###########################   Copying up inside script   ###########################"
 cp inside.sh /mnt/
-cp conf/rc.conf /mnt/etc/
 
 echo "###########################   Entering Chroot   ###########################"
 arch-chroot /mnt /bin/bash inside.sh
