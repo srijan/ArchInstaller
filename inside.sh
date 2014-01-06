@@ -7,7 +7,6 @@ PASSWORD="password"
 
 echo "###########################   Configuring Hostname   ###########################"
 echo $HOST > /etc/hostname
-sed -i "s/127.0.0.1\tlocalhost.localdomain\tlocalhost/&\t$HOST/" /etc/hosts
 
 echo "###########################   Configuring Consolemap   ###########################"
 echo "KEYMAP=us" > /etc/vconsole.conf
@@ -35,6 +34,7 @@ echo "###########################   Configuring GRUB   #########################
 grub-install /dev/sda
 mkdir -p /boot/grub/locale
 cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
+echo "# fix broken grub.cfg gen\nGRUB_DISABLE_SUBMENU=y" >> /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "###########################   Setting Root Password   ###########################"
