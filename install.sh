@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Variables
-PACKAGES="dnsutils elinks htop mlocate net-tools openssh openssl rsync tmux vim"
+PACKAGES="dnsutils elinks htop mlocate net-tools openssh openssl rsync tmux vim wget sudo"
 
 echo "###########################   Disk Setup   ###########################"
 parted -m -s /dev/sda print | awk -F : '{print $1}' | grep "^[1-9]$" | xargs -L1 parted /dev/sda -s rm      # deletes all partitions
